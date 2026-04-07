@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Dalia 💜</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #5a189a, #c77dff);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 3em;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 30px #ffb3ff; }
+    }
+
+    .panda {
+      font-size: 80px;
+      transition: transform 0.5s;
+    }
+
+    .gallery img {
+      width: 260px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.6);
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.4em;
+      min-height: 40px;
+    }
+
+    .letter {
+      margin: 30px auto;
+      width: 80%;
+      max-width: 500px;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    video {
+      margin-top: 20px;
+      width: 80%;
+      border-radius: 20px;
+    }
+
+    .heart {
+      position: fixed;
+      color: #ffccff;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: #e0aaff;
+      border-radius: 50%;
+      animation: rise 6s linear infinite;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #9d4edd;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1 id="name">Dalia Dhar 💜</h1>
+<div class="panda" id="panda">🐼</div>
+
+<div class="gallery">
+  <img id="photo" src="photo1.jpg">
+</div>
+
+<div class="message" id="message"></div>
+
+<div class="letter" onclick="toggleLetter()">
+  💌 Click to open your letter
+  <p id="loveLetter" class="hidden"></p>
+</div>
+
+<video controls>
+  <source src="your-video.mp4" type="video/mp4">
+</video>
+
+<audio id="music" autoplay loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<button onclick="playMusic()">Play Music 🎵</button>
+
+<script>
+  const messages = [
+    "You’re my favorite notification ❤️",
+    "I still smile like an idiot because of you 😊",
+    "You make everything feel right 💜",
+    "My world = You 🐼",
+    "Happy Birthday, my love 🎂"
+  ];
+
+  const photos = ["photo1.jpg","photo2.jpg","photo3.jpg"];
+
+  const letterText = "Happy Birthday Dalia 💜\n\nI don’t say this enough, but you genuinely make my life better. Even on my worst days, just thinking about you changes everything. I don’t need perfect moments, I just need you. \n\nStay the same crazy, cute, amazing girl I fell for. 🐼❤️";
+
+  let i = 0, j = 0;
+
+  function typeEffect() {
+    if (j < messages[i % messages.length].length) {
+      document.getElementById("message").innerHTML += messages[i % messages.length].charAt(j);
+      j++;
+      setTimeout(typeEffect, 40);
+    } else {
+      setTimeout(() => {
+        document.getElementById("message").innerHTML = "";
+        j = 0;
+        i++;
+        updateContent();
+      }, 2000);
+    }
+  }
+
+  function updateContent() {
+    document.getElementById("photo").src = photos[i % photos.length];
+
+    const name = document.getElementById("name");
+    name.innerText = i % 2 === 0 ? "Dalia Dhar 💜" : "🐼 Panda Queen 🐼";
+
+    typeEffect();
+  }
+
+  function toggleLetter() {
+    const letter = document.getElementById("loveLetter");
+    if (letter.classList.contains("hidden")) {
+      letter.classList.remove("hidden");
+      letter.innerText = letterText;
+    } else {
+      letter.classList.add("hidden");
+    }
+  }
+
+  function playMusic() {
+    document.getElementById("music").play();
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "💜";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }
+
+  function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(balloon);
+    setTimeout(() => balloon.remove(), 6000);
+  }
+
+  updateContent();
+  setInterval(createHeart, 400);
+  setInterval(createBalloon, 700);
+</script>
+
+</body>
+</html>

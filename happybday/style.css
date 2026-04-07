@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: radial-gradient(circle at top, #6a0dad, #2e003e);
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  margin-top: 5%;
+}
+
+.title {
+  font-size: 3.5rem;
+  color: #fff;
+  animation: glow 2s infinite alternate;
+}
+
+.message {
+  font-size: 2rem;
+  color: #f3e5f5;
+  margin: 20px 0;
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid #fff;
+  white-space: nowrap;
+  animation: typing 3s steps(30, end) infinite alternate,
+             blink-caret .75s step-end infinite;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #8e24aa, #ba68c8);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: #9c27b0;
+}
+
+.video-box {
+  margin-top: 30px;
+}
+
+.slideshow {
+  margin-top: 30px;
+}
+
+.slideshow img {
+  width: 320px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 25px #e1bee7;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.slideshow p {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 10px;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 15px #ba68c8; }
+  to { text-shadow: 0 0 30px #e1bee7; }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  width: 50px;
+  height: 70px;
+  border-radius: 50%;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-120vh); }
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(120vh); }
+}
